@@ -266,6 +266,8 @@ class BaseResources(object):
             with open(path, 'rb') as f:
                 middle = f.read().decode("utf-8")
         except IOError:
+            print("\n\n\n\n %s \n\n\n\n" % path)
+            raise RuntimeError("BAD RESOURCE : %s" % path)
             middle = ""
         end = "/* END %s */"  % basename(path)
         return "%s\n%s\n%s" % (begin, middle, end)
