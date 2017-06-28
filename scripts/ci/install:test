@@ -21,6 +21,7 @@ popd
 # regrettably need to have previous JS build in the source tree
 python setup.py --install-js
 
+# execute any test-specific install scripts
 if [[ -f "scripts/ci/install:${GROUP}" ]]; then
     bash "scripts/ci/install:${GROUP}"
 fi

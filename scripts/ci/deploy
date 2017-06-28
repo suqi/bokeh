@@ -3,7 +3,7 @@
 set -e # exit on error
 set -x # echo commands
 
-if  [[ -z "${TRAVIS_TAG}" ]];; then
+if  [[ -z "${TRAVIS_TAG}" ]]; then
     echo
     echo "SKIPPING RELEASE DEPLOY --- not a tagged release"
     echo
@@ -25,4 +25,4 @@ chmod 600 bokeh_key
 eval `ssh-agent -s`
 ssh-add bokeh_key
 
-#python scripts/build_upload.py $TRAVIS_TAG
+python scripts/build_upload.py $TRAVIS_TAG

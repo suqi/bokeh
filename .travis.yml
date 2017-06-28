@@ -83,6 +83,10 @@ jobs:
 
     - script: scripts/ci/test
       env:
+      - GROUP=docs
+
+    - script: scripts/ci/test
+      env:
       - GROUP=quality
 
     - stage: deploy

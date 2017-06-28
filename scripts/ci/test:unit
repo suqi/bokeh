@@ -3,12 +3,6 @@
 set -e # exit on error
 set -x # echo commands
 
-echo
-echo
-echo `phantomjs -v`
-echo
-echo
-
 py.test -m 'unit'                   \
     --rerun=5                       \
     --cov=bokeh                     \
