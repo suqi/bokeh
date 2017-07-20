@@ -51,12 +51,18 @@ class Glyph(Model):
 
     '''
 
-class AnnularWedge(Glyph):
+@abstract
+class XYGlyph(Glyph):
+    ''' Base class of glyphs with `x` and `y` coordinate attributes.
+
+    '''
+
+class AnnularWedge(XYGlyph):
     ''' Render annular wedges.
 
     '''
 
-    __example__ = "tests/glyphs/AnnularWedge.py"
+    __example__ = "examples/reference/models/AnnularWedge.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -98,12 +104,12 @@ class AnnularWedge(Glyph):
     The %s values for the annular wedges.
     """)
 
-class Annulus(Glyph):
+class Annulus(XYGlyph):
     ''' Render annuli.
 
     '''
 
-    __example__ = "tests/glyphs/Annulus.py"
+    __example__ = "examples/reference/models/Annulus.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -133,12 +139,12 @@ class Annulus(Glyph):
     The %s values for the annuli.
     """)
 
-class Arc(Glyph):
+class Arc(XYGlyph):
     ''' Render arcs.
 
     '''
 
-    __example__ = "tests/glyphs/Arc.py"
+    __example__ = "examples/reference/models/Arc.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -181,7 +187,7 @@ class Bezier(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Bezier.py"
+    __example__ = "examples/reference/models/Bezier.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -223,12 +229,12 @@ class Bezier(Glyph):
     The %s values for the Bézier curves.
     """)
 
-class Ellipse(Glyph):
+class Ellipse(XYGlyph):
     u''' Render ellipses.
 
     '''
 
-    __example__ = "tests/glyphs/Ellipse.py"
+    __example__ = "examples/reference/models/Ellipse.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -268,7 +274,7 @@ class HBar(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/HBar.py"
+    __example__ = "examples/reference/models/HBar.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -298,7 +304,7 @@ class HBar(Glyph):
     The %s values for the horizontal bars.
     """)
 
-class Image(Glyph):
+class Image(XYGlyph):
     ''' Render images given as scalar data together with a color mapper.
 
     In addition to the defined model properties, ``Image`` also can accept
@@ -383,7 +389,7 @@ class Image(Glyph):
     # TODO: (bev) support anchor property for Image
     # ref: https://github.com/bokeh/bokeh/issues/1763
 
-class ImageRGBA(Glyph):
+class ImageRGBA(XYGlyph):
     ''' Render images given as RGBA data.
 
     '''
@@ -431,12 +437,12 @@ class ImageRGBA(Glyph):
     # TODO: (bev) support anchor property for ImageRGBA
     # ref: https://github.com/bokeh/bokeh/issues/1763
 
-class ImageURL(Glyph):
+class ImageURL(XYGlyph):
     ''' Render images loaded from given URLs.
 
     '''
 
-    __example__ = "tests/glyphs/ImageURL.py"
+    __example__ = "examples/reference/models/ImageURL.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -505,7 +511,7 @@ class ImageURL(Glyph):
     specified URL. Default is zero ms.
     """)
 
-class Line(Glyph):
+class Line(XYGlyph):
     ''' Render a single line.
 
     The ``Line`` glyph is different from most other glyphs in that the vector
@@ -516,7 +522,7 @@ class Line(Glyph):
     # functions derived from this class
     _args = ('x', 'y')
 
-    __example__ = "tests/glyphs/Line.py"
+    __example__ = "examples/reference/models/Line.py"
 
     x = NumberSpec(help="""
     The x-coordinates for the points of the line.
@@ -538,7 +544,7 @@ class MultiLine(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/MultiLine.py"
+    __example__ = "examples/reference/models/MultiLine.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -556,7 +562,7 @@ class MultiLine(Glyph):
     The %s values for the lines.
     """)
 
-class Oval(Glyph):
+class Oval(XYGlyph):
     u''' Render ovals.
 
     This glyph renders ovals using Bézier curves, which are similar,
@@ -565,7 +571,7 @@ class Oval(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Oval.py"
+    __example__ = "examples/reference/models/Oval.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -599,7 +605,7 @@ class Oval(Glyph):
     The %s values for the ovals.
     """)
 
-class Patch(Glyph):
+class Patch(XYGlyph):
     ''' Render a single patch.
 
     The ``Patch`` glyph is different from most other glyphs in that the vector
@@ -607,7 +613,7 @@ class Patch(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Patch.py"
+    __example__ = "examples/reference/models/Patch.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -647,7 +653,7 @@ class Patches(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Patches.py"
+    __example__ = "examples/reference/models/Patches.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -684,7 +690,7 @@ class Quad(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Quad.py"
+    __example__ = "examples/reference/models/Quad.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -719,7 +725,7 @@ class Quadratic(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Quadratic.py"
+    __example__ = "examples/reference/models/Quadratic.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -753,12 +759,12 @@ class Quadratic(Glyph):
     The %s values for the parabolas.
     """)
 
-class Ray(Glyph):
+class Ray(XYGlyph):
     ''' Render rays.
 
     '''
 
-    __example__ = "tests/glyphs/Ray.py"
+    __example__ = "examples/reference/models/Ray.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -785,12 +791,12 @@ class Ray(Glyph):
     The %s values for the rays.
     """)
 
-class Rect(Glyph):
+class Rect(XYGlyph):
     ''' Render rectangles.
 
     '''
 
-    __example__ = "tests/glyphs/Rect.py"
+    __example__ = "examples/reference/models/Rect.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -838,7 +844,7 @@ class Segment(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/Segment.py"
+    __example__ = "examples/reference/models/Segment.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -864,12 +870,12 @@ class Segment(Glyph):
     The %s values for the segments.
     """)
 
-class Text(Glyph):
+class Text(XYGlyph):
     ''' Render text.
 
     '''
 
-    __example__ = "tests/glyphs/Text.py"
+    __example__ = "examples/reference/models/Text.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -914,7 +920,7 @@ class VBar(Glyph):
 
     '''
 
-    __example__ = "tests/glyphs/VBar.py"
+    __example__ = "examples/reference/models/VBar.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class
@@ -944,12 +950,12 @@ class VBar(Glyph):
     The %s values for the vertical bars.
     """)
 
-class Wedge(Glyph):
+class Wedge(XYGlyph):
     ''' Render wedges.
 
     '''
 
-    __example__ = "tests/glyphs/Wedge.py"
+    __example__ = "examples/reference/models/Wedge.py"
 
     # a canonical order for positional args that can be used for any
     # functions derived from this class

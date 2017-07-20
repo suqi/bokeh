@@ -11,11 +11,8 @@ import {isEqual} from "core/util/eq"
 import {Models} from "base"
 import {HasProps} from "core/has_props"
 
-import {models as widget_models} from "models/widgets/main"
-Models.register_models(widget_models as {[key: string]: any}, false, undefined)
-
-import {models as table_models} from "models/widgets/tables/main"
-Models.register_models(table_models as {[key: string]: any}, false, undefined)
+import {Widgets as widget_models} from "models/widgets/main"
+import {Tables as table_models} from "models/widgets/tables/main"
 
 function get_defaults(name: string) {
   const defaults = core_defaults.get_defaults(name) || widget_defaults.get_defaults(name)
@@ -63,6 +60,10 @@ function check_matching_defaults(name: string, python_defaults: {[key: string]: 
   const bokehjs_missing: string[] = []
   for (const k in bokehjs_defaults) {
     const js_v = bokehjs_defaults[k]
+
+    // special case for graph renderer sources
+    if (name === "GraphRenderer" && k === "graph_source")
+      continue
 
     // special case for date picker, default is "now"
     if (name === 'DatePicker' && k === 'value')
